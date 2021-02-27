@@ -122,18 +122,11 @@ describe('Party Horn Tests', () => {
     });
   });
 
-  it('Except honk button to be disabled now that volume is mute if value equals 0', () => {
+  it('Except honk button to be disabled now that volume is mute', () => {
     cy.get('#volume-slider')
       .invoke('val', 0)
-      .trigger('input');
-    cy.get('#honk-btn').then($el => {
-      expect($el).to.have.attr('disabled');
-    });
-  });
-
-  it('Except honk button to be disabled now that volume is mute if input is empty', () => {
-    cy.get('#volume-slider')
       .invoke('val').should('be.empty')
+      .invoke('val').should('be.lt', 101)
       .trigger('input');
     cy.get('#honk-btn').then($el => {
       expect($el).to.have.attr('disabled');
@@ -168,11 +161,5 @@ describe('Party Horn Tests', () => {
     cy.get('#horn-sound').then($el => {
       expect($el).to.have.prop('paused', false);
     });
-  });
-
-  it('Throw error when the input value is outside the 0-100 range', () => {
-    cy.get('#volume-slider')
-      .invoke('val', 101)
-      .trigger('input');
   });
 });

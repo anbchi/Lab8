@@ -170,7 +170,7 @@ describe('Party Horn Tests', () => {
     });
   });
 
-  it('Throw error when the input value is outside the 0-100 range', () => {
+  it('Catch error when the input value is outside the 0-100 range', () => {
     cy.get('#volume-slider')
       .invoke('val', 101)
       .trigger('input');

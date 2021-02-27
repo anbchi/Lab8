@@ -6,7 +6,6 @@ let numInput = document.getElementById('volume-number');
 let volumeIcon = document.getElementById('volume-image');
 let airHorn = document.getElementById('radio-air-horn');
 let carHorn = document.getElementById('radio-car-horn');
-let partyHorn = document.getElementById('radio-party-horn');
 let hornSound = document.getElementById('horn-sound');
 let soundImage = document.getElementById('sound-image');
 let honkBtn = document.getElementById('honk-btn');
@@ -55,11 +54,6 @@ airHorn.addEventListener('change', () => {
 carHorn.addEventListener('change', () => {
   soundImage.src = "./assets/media/images/car.svg";
   hornSound.src = "./assets/media/audio/car-horn.mp3";
-});
-
-partyHorn.addEventListener('change', () => {
-  soundImage.src = "./assets/media/images/party-horn.svg";
-  hornSound.src = "./assets/media/audio/party-horn.mp3";
 });
 
 form.addEventListener('submit', (e) => {

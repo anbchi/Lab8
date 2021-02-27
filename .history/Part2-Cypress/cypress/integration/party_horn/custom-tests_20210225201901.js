@@ -122,18 +122,11 @@ describe('Party Horn Tests', () => {
     });
   });
 
-  it('Except honk button to be disabled now that volume is mute if value equals 0', () => {
+  it('Except honk button to be disabled now that volume is mute', () => {
     cy.get('#volume-slider')
       .invoke('val', 0)
-      .trigger('input');
-    cy.get('#honk-btn').then($el => {
-      expect($el).to.have.attr('disabled');
-    });
-  });
-
-  it('Except honk button to be disabled now that volume is mute if input is empty', () => {
-    cy.get('#volume-slider')
-      .invoke('val').should('be.empty')
+      .invoke('val', "")
+      .invoke('val', isNaN('val'))
       .trigger('input');
     cy.get('#honk-btn').then($el => {
       expect($el).to.have.attr('disabled');
@@ -151,7 +144,7 @@ describe('Party Horn Tests', () => {
   });
 
   it('Image & Sound changes when radio buttons are swapped to Party Horn', () => {
-    cy.get('#radio-party-horn').click();
+    cy.get('#radio-car-horn').click();
     cy.get('#sound-image').then($el => {
       expect($el).to.have.attr('src', './assets/media/images/party-horn.svg');
     });
@@ -168,11 +161,5 @@ describe('Party Horn Tests', () => {
     cy.get('#horn-sound').then($el => {
       expect($el).to.have.prop('paused', false);
     });
-  });
-
-  it('Throw error when the input value is outside the 0-100 range', () => {
-    cy.get('#volume-slider')
-      .invoke('val', 101)
-      .trigger('input');
   });
 });
